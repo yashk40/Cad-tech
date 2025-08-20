@@ -1,0 +1,198 @@
+"use client"
+
+import type React from "react"
+
+import { useState } from "react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { Badge } from "@/components/ui/badge"
+import { Mail, Phone, MapPin, Clock, Send, MessageSquare } from "lucide-react"
+
+const contactInfo = [
+  {
+    icon: Mail,
+    title: "Email Us",
+    details: "info@cadtech.com",
+    description: "Get in touch for course inquiries",
+  },
+  {
+    icon: Phone,
+    title: "Call Us",
+    details: "+1 (555) 123-4567",
+    description: "Speak with our training advisors",
+  },
+  {
+    icon: MapPin,
+    title: "Visit Us",
+    details: "123 Tech Street, Digital City",
+    description: "Our modern training facility",
+  },
+  {
+    icon: Clock,
+    title: "Office Hours",
+    details: "Mon-Fri: 9AM-6PM",
+    description: "We're here to help you succeed",
+  },
+]
+
+export default function ContactSection() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    course: "",
+    message: "",
+  })
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    // Handle form submission
+    console.log("Form submitted:", formData)
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    })
+  }
+
+  return (
+    <section id="contact" className="py-20 relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-card/30 to-background"></div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center space-y-4 mb-16">
+          <Badge variant="outline" className="border-primary text-primary">
+            Get In Touch
+          </Badge>
+          <h2 className="text-3xl md:text-5xl font-heading font-black text-foreground">
+            Ready to Start Your
+            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"> Learning Journey?</span>
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            Have questions about our courses? Want to discuss your career goals? Our expert advisors are here to help
+            you choose the right path.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Contact Info Cards */}
+          <div className="space-y-6">
+            {contactInfo.map((info, index) => {
+              const IconComponent = info.icon
+              return (
+                <Card
+                  key={index}
+                  className="gradient-card border-border/20 hover:glow-primary transition-all duration-300 group"
+                >
+                  <CardContent className="p-6">
+                    <div className="flex items-start space-x-4">
+                      <div className="w-12 h-12 gradient-primary rounded-lg flex items-center justify-center flex-shrink-0 group-hover:glow-primary transition-all duration-300">
+                        <IconComponent className="w-6 h-6 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-heading font-bold text-foreground group-hover:text-primary transition-colors">
+                          {info.title}
+                        </h3>
+                        <p className="text-foreground font-semibold mt-1">{info.details}</p>
+                        <p className="text-muted-foreground text-sm mt-1">{info.description}</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              )
+            })}
+          </div>
+
+          {/* Contact Form */}
+          <div className="lg:col-span-2">
+            <Card className="gradient-card border-border/20 glow-secondary">
+              <CardHeader>
+                <CardTitle className="flex items-center space-x-2 text-foreground">
+                  <MessageSquare className="w-6 h-6 text-primary" />
+                  <span>Send us a Message</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label htmlFor="name" className="text-sm font-semibold text-foreground">
+                        Full Name *
+                      </label>
+                      <Input
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder="Enter your full name"
+                        className="bg-input border-border focus:border-primary"
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label htmlFor="email" className="text-sm font-semibold text-foreground">
+                        Email Address *
+                      </label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="Enter your email"
+                        className="bg-input border-border focus:border-primary"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label htmlFor="course" className="text-sm font-semibold text-foreground">
+                      Course Interest
+                    </label>
+                    <Input
+                      id="course"
+                      name="course"
+                      value={formData.course}
+                      onChange={handleChange}
+                      placeholder="Which course are you interested in?"
+                      className="bg-input border-border focus:border-primary"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <label htmlFor="message" className="text-sm font-semibold text-foreground">
+                      Message *
+                    </label>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder="Tell us about your goals and how we can help..."
+                      className="bg-input border-border focus:border-primary min-h-[120px]"
+                      required
+                    />
+                  </div>
+
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="w-full gradient-primary hover:glow-primary transition-all duration-300"
+                  >
+                    <Send className="w-5 h-5 mr-2" />
+                    Send Message
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
