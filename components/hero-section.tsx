@@ -2,13 +2,71 @@
 
 import { Button } from "@/components/ui/button"
 import { Play, Users, Award, Clock } from "lucide-react"
+import { useEffect, useRef, useState } from "react"
 
 export default function HeroSection() {
+  const [vantaEffect, setVantaEffect] = useState<any>(null)
+  const vantaRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!vantaEffect && vantaRef.current) {
+      const initVanta = async () => {
+        try {
+          // Load Three.js first (required dependency for Vanta.js)
+          const threeScript = document.createElement('script')
+          threeScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js'
+          
+          threeScript.onload = () => {
+            // Load Vanta.js after Three.js is loaded
+            const vantaScript = document.createElement('script')
+            vantaScript.src = 'https://cdn.jsdelivr.net/npm/vanta/dist/vanta.waves.min.js'
+            
+            vantaScript.onload = () => {
+              if ((window as any).VANTA && vantaRef.current) {
+                const effect = (window as any).VANTA.WAVES({
+                  el: vantaRef.current,
+                  mouseControls: true,
+                  touchControls: true,
+                  gyroControls: false,
+                  minHeight: 200.00,
+                  minWidth: 200.00,
+                  scale: 1.00,
+                  scaleMobile: 1.00,
+                  shine: 0,
+                  wave: 2.5,
+                  speed: 1.05,
+                  color: 0x8a8a93
+                })
+                setVantaEffect(effect)
+              }
+            }
+            document.head.appendChild(vantaScript)
+          }
+          document.head.appendChild(threeScript)
+        } catch (error) {
+          console.error('Failed to initialize Vanta effect:', error)
+        }
+      }
+      initVanta()
+    }
+
+    return () => {
+      if (vantaEffect && vantaEffect.destroy) vantaEffect.destroy()
+    }
+  }, [vantaEffect])
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 gradient-primary opacity-10"></div>
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-background/90"></div>
+
+      {/* Vanta.js waves background */}
+      <div 
+        ref={vantaRef} 
+        className="absolute inset-0 w-screen left-1/2 transform -translate-x-1/2" 
+        style={{height: '100%', overflow: 'hidden', zIndex: 0}}
+      />
 
       {/* Animated background elements */}
       <div className="absolute top-20 left-10 w-20 h-20 bg-primary/20 rounded-full blur-xl animate-pulse"></div>
@@ -50,56 +108,7 @@ export default function HeroSection() {
           </div>
 
  
-          {/* <div className="mt-16">
-         
-            <div className="md:hidden grid grid-cols-3 gap-4">
-              <div className="text-center space-y-2">
-                <div className="flex flex-col items-center justify-center">
-                  <Users className="w-8 h-8 text-primary mb-2" />
-                  <div className="text-2xl font-heading font-black text-foreground">5000+</div>
-                  <div className="text-xs text-muted-foreground">Students Trained</div>
-                </div>
-              </div>
-              <div className="text-center space-y-2">
-                <div className="flex flex-col items-center justify-center">
-                  <Award className="w-8 h-8 text-secondary mb-2" />
-                  <div className="text-2xl font-heading font-black text-foreground">98%</div>
-                  <div className="text-xs text-muted-foreground">Success Rate</div>
-                </div>
-              </div>
-              <div className="text-center space-y-2">
-                <div className="flex flex-col items-center justify-center">
-                  <Clock className="w-8 h-8 text-accent mb-2" />
-                  <div className="text-2xl font-heading font-black text-foreground">24/7</div>
-                  <div className="text-xs text-muted-foreground">Support Available</div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="hidden md:grid-cols-3  gap-8">
-              <div className="text-center space-y-2">
-                <div className="flex items-center justify-center">
-                  <Users className="w-8 h-8 text-primary mr-2" />
-                  <span className="text-3xl font-heading font-black text-foreground">5000+</span>
-                </div>
-                <p className="text-base text-muted-foreground">Students Trained</p>
-              </div>
-              <div className="text-center space-y-2">
-                <div className="flex items-center justify-center">
-                  <Award className="w-8 h-8 text-secondary mr-2" />
-                  <span className="text-3xl font-heading font-black text-foreground">98%</span>
-                </div>
-                <p className="text-base text-muted-foreground">Success Rate</p>
-              </div>
-              <div className="text-center space-y-2">
-                <div className="flex items-center justify-center">
-                  <Clock className="w-8 h-8 text-accent mr-2" />
-                  <span className="text-3xl font-heading font-black text-foreground">24/7</span>
-                </div>
-                <p className="text-base text-muted-foreground">Support Available</p>
-              </div>
-            </div>
-          </div> */}
+      
         </div>
       </div>
     </section>
