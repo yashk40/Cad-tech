@@ -8,8 +8,6 @@ const footerLinks = {
     { name: "Video Editing", href: "#" },
     { name: "Graphic Design", href: "#" },
     { name: "Web Development", href: "#" },
-    { name: "Data Visualization", href: "#" },
-    { name: "Photography", href: "#" },
   ],
   company: [
     { name: "About Us", href: "#about" },
