@@ -32,13 +32,13 @@ export default function HeroSection() {
                   minWidth: 200.00,
                   scale: 1.00,
                   scaleMobile: 1.00,
-                  shine: 0,
+                  shine: 2,
                   wave: 2.5,
-                  speed: 1.05,
-                  color: 0x727272,
+                  speed: 5,
+                  color: 0x828384,
                   shininess: 4.00,
-                  waveHeight: 2.50,
-                  waveSpeed: 0.20
+                  waveHeight:5.5,
+                  waveSpeed: 2
                 })
                 setVantaEffect(effect)
               }
@@ -61,8 +61,7 @@ export default function HeroSection() {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden" style={{fontFamily:"Poppins"}}>
       {/* Background gradient */}
-      <div className="absolute inset-0 gradient-primary opacity-10"></div>
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-background/90"></div>
+      
 
       {/* Vanta.js waves background */}
       <div 
@@ -72,9 +71,7 @@ export default function HeroSection() {
       />
 
       {/* Animated background elements */}
-      <div className="absolute top-20 left-10 w-20 h-20 bg-primary/20 rounded-full blur-xl animate-pulse"></div>
-      <div className="absolute bottom-20 right-10 w-32 h-32 bg-secondary/20 rounded-full blur-xl animate-pulse delay-1000"></div>
-      <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-accent/20 rounded-full blur-xl animate-pulse delay-500"></div>
+   
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="space-y-8 mt-24 md:mt-28 lg:mt-32">
@@ -88,7 +85,8 @@ export default function HeroSection() {
                   mainClassName="inline-flex items-center whitespace-nowrap w-auto shrink-0 px-1 sm:px-2 md:px-2 bg-white text-black overflow-hidden rounded-lg"
                   staggerFrom={"last"}
                   initial={{ y: "100%" }}
-                  animate={{ y: 0 }}
+                  animate={{ y: 4 }}
+                  
                   exit={{ y: "-120%" }}
                   staggerDuration={0.025}
                   splitLevelClassName="overflow-hidden"
@@ -116,14 +114,16 @@ export default function HeroSection() {
               </span>
            
             </button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-white text-white hover:bg-white hover:text-black transition-all duration-300 text-lg px-14 py-8 bg-transparent rounded-2xl"
-            >
-              <Play className="w-5 h-5 mr-2" />
-              Watch Our Demo
-            </Button>
+            <a
+             style={{fontSize:"18px",}}
+               className="cssbuttons-io-2 px-8 py-1"
+             href="https://www.instagram.com/reel/DNlQPL0S0YO/?igsh=MXVzMWo5ZjF3ODh3cg=="
+           >
+              <span>
+             Watch our Demo
+              </span>
+           
+            </a>
           </div>
 
  
