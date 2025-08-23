@@ -43,13 +43,11 @@ const benefits = [
 export default function AboutSection() {
   return (
     <section id="about" className="py-20 relative">
-      <div className="absolute inset-0 bg-gradient-to-r from-background via-card/30 to-background"></div>
-
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left Content */}
           <div className="space-y-8">
-            <div className="space-y-4">
+            <div className="space-y-4" data-aos="fade-right">
               <Badge variant="outline" className="border-secondary text-secondary">
                 About CadTech
               </Badge>
@@ -65,12 +63,12 @@ export default function AboutSection() {
             </div>
 
             {/* Benefits List */}
-            <div className="space-y-4">
+            <div className="space-y-4" data-aos="fade-down" >
               <h3 className="text-xl font-heading font-bold text-foreground">Why Choose CadTech?</h3>
               <div className="grid grid-cols-1 gap-3">
                 {benefits.map((benefit, index) => (
                   <div key={index} className="flex items-center space-x-3">
-                    <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-black flex-shrink-0" />
                     <span className="text-muted-foreground">{benefit}</span>
                   </div>
                 ))}
@@ -78,11 +76,11 @@ export default function AboutSection() {
             </div>
 
             {/* Mission Statement */}
-            <Card className="gradient-card border-border/20 glow-secondary">
+            <Card className="bg-white border-border/20 glow-secondary-black" data-aos="fade-up">
               <CardContent className="p-6">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-secondary/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <TrendingUp className="w-6 h-6 text-secondary" />
+                  <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center flex-shrink-0" style={{ boxShadow: "0px 0px 8px #1212" }}>
+                    <TrendingUp className="w-6 h-6 text-black" />
                   </div>
                   <div>
                     <h4 className="font-heading font-bold text-foreground mb-2">Our Mission</h4>
@@ -97,20 +95,20 @@ export default function AboutSection() {
           </div>
 
           {/* Right Content - Stats Grid */}
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-2 gap-6" data-aos="fade-up">
             {achievements.map((achievement, index) => {
               const IconComponent = achievement.icon
               return (
                 <Card
                   key={index}
-                  className="gradient-card border-border/20 hover:glow-primary transition-all duration-300 group"
+                  className="bg-white border-border/20 hover:glow-primary transition-all duration-300 group"
                 >
                   <CardContent className="p-6 text-center space-y-4">
-                    <div className="w-16 h-16 gradient-primary rounded-full flex items-center justify-center mx-auto group-hover:glow-primary transition-all duration-300">
+                    <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto transition-all duration-300">
                       <IconComponent className="w-8 h-8 text-white" />
                     </div>
                     <div>
-                      <div className="text-3xl font-heading font-black text-foreground group-hover:text-primary transition-colors">
+                      <div className="text-3xl font-heading font-black text-foreground transition-colors">
                         {achievement.number}
                       </div>
                       <div className="text-sm font-semibold text-foreground mt-1">{achievement.label}</div>

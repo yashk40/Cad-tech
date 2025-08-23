@@ -43,6 +43,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-background text-foreground">
         <LenisProvider>{children}</LenisProvider>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" strategy="afterInteractive" />
         <script dangerouslySetInnerHTML={{ __html: "AOS.init();" }} /> {/* Basic AOS init; customize as needed */}
       </body>
     </html>

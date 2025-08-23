@@ -24,12 +24,6 @@ const contactInfo = [
     description: "Speak with our training advisors",
   },
   {
-    icon: MapPin,
-    title: "Visit Us",
-    details: "123 Tech Street, Digital City",
-    description: "Our modern training facility",
-  },
-  {
     icon: Clock,
     title: "Office Hours",
     details: "Mon-Fri: 9AM-6PM",
@@ -65,12 +59,12 @@ export default function ContactSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center space-y-4 mb-16">
-          <Badge variant="outline" className="border-primary text-primary">
+          <Badge variant="outline" className="border-black text-black">
             Get In Touch
           </Badge>
           <h2 className="text-3xl md:text-5xl font-heading font-black text-foreground">
             Ready to Start Your
-            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"> Learning Journey?</span>
+            <span className="bg-gradient-to-r from-black to-secondary bg-clip-text text-transparent"> Learning Journey?</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Have questions about our courses? Want to discuss your career goals? Our expert advisors are here to help
@@ -86,15 +80,15 @@ export default function ContactSection() {
               return (
                 <Card
                   key={index}
-                  className="gradient-card border-border/20 hover:glow-primary transition-all duration-300 group"
+                  className="bg-white border-border/20 hover:glow-black transition-all duration-300 group"
                 >
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 gradient-primary rounded-lg flex items-center justify-center flex-shrink-0 group-hover:glow-primary transition-all duration-300">
-                        <IconComponent className="w-6 h-6 text-white" />
+                      <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center flex-shrink-0 group-hover:glow-black transition-all duration-300" style={{ boxShadow: "0px 0px 5px #1212" }}>
+                        <IconComponent className="w-6 h-6 text-black" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="font-heading font-bold text-foreground group-hover:text-primary transition-colors">
+                        <h3 className="font-heading font-bold text-foreground group-hover:text-black transition-colors">
                           {info.title}
                         </h3>
                         <p className="text-foreground font-semibold mt-1">{info.details}</p>
@@ -109,10 +103,10 @@ export default function ContactSection() {
 
           {/* Contact Form */}
           <div className="lg:col-span-2">
-            <Card className="gradient-card border-border/20 glow-secondary">
+            <Card className="bg-white border-border/20 ">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2 text-foreground">
-                  <MessageSquare className="w-6 h-6 text-primary" />
+                  <MessageSquare className="w-6 h-6 text-black" />
                   <span>Send us a Message</span>
                 </CardTitle>
               </CardHeader>
@@ -129,7 +123,7 @@ export default function ContactSection() {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="Enter your full name"
-                        className="bg-input border-border focus:border-primary"
+                        className="bg-gray-200 border-border focus:border-black"
                         required
                       />
                     </div>
@@ -144,7 +138,7 @@ export default function ContactSection() {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="Enter your email"
-                        className="bg-input border-border focus:border-primary"
+                        className="bg-gray-200 border-border focus:border-black"
                         required
                       />
                     </div>
@@ -160,7 +154,7 @@ export default function ContactSection() {
                       value={formData.course}
                       onChange={handleChange}
                       placeholder="Which course are you interested in?"
-                      className="bg-input border-border focus:border-primary"
+                      className="bg-gray-200 border-border focus:border-black"
                     />
                   </div>
 
@@ -174,7 +168,7 @@ export default function ContactSection() {
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="Tell us about your goals and how we can help..."
-                      className="bg-input border-border focus:border-primary min-h-[120px]"
+                      className="bg-gray-200 border-border focus:border-black min-h-[120px]"
                       required
                     />
                   </div>
@@ -182,7 +176,7 @@ export default function ContactSection() {
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full gradient-primary hover:glow-primary transition-all duration-300"
+                    className="w-full bg-black  transition-all duration-300 hover:bg-black"
                   >
                     <Send className="w-5 h-5 mr-2" />
                     Send Message

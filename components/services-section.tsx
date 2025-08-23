@@ -1,9 +1,13 @@
 "use client"
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Layers, Video, Palette, Database, Code2, Camera, Clock, Users, Star } from "lucide-react"
+import React, { useState, useRef, useEffect } from 'react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Layers, Video, Palette, Database, Code2, Camera, Clock, Users, Star } from "lucide-react";
+
+// Note: Add this script tag to your main HTML file or use Next.js Script component in _app.js or layout
+// <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 
 const courses = [
   {
@@ -66,27 +70,137 @@ const courses = [
     level: "All Levels",
     features: ["Digital Photography", "Lightroom & Photoshop", "Portfolio Development", "Business Skills"],
   },
-]
+];
+
+function EnrollmentForm({ course, onClose }) {
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    courseInterest: course.title,
+    message: '',
+  });
+
+  const modalRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(modalRef.current, {
+        opacity: 0,
+        scale: 0.9,
+        duration: 0.5,
+        ease: 'power2.out',
+      });
+    }, modalRef);
+
+    const handleScroll = () => onClose();
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      ctx.revert(); // Cleanup GSAP
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [onClose]);
+
+  function handleChange(e) {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    onClose();
+  }
+
+  return (
+    <div className="fixed inset-0 bg-[#1d1d1d2d] flex items-center justify-center z-50">
+      <div ref={modalRef} className="bg-white rounded-lg p-6 max-w-md w-full relative">
+        <button className="absolute top-2 right-2 text-gray-600 hover:text-gray-900" onClick={onClose}>&times;</button>
+        <h3 className="text-lg font-bold mb-4">Enroll in {course.title}</h3>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">Full Name</label>
+            <input
+              id="fullName"
+              name="fullName"
+              type="text"
+              required
+              className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+              value={formData.fullName}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+              value={formData.email}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="courseInterest" className="block text-sm font-medium text-gray-700">Course Interest</label>
+            <input
+              id="courseInterest"
+              name="courseInterest"
+              type="text"
+              className="mt-1 block w-full border border-gray-300 rounded-md p-2 bg-gray-100"
+              value={formData.courseInterest}
+              readOnly
+            />
+          </div>
+          <div>
+            <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="3"
+              className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+              value={formData.message}
+              onChange={handleChange}
+            />
+          </div>
+          <Button type="submit" className="w-full bg-black text-white hover:bg-gray-800">
+            Submit
+          </Button>
+        </form>
+      </div>
+    </div>
+  );
+}
 
 export default function ServicesSection() {
+  const [showForm, setShowForm] = useState(false);
+  const [selectedCourse, setSelectedCourse] = useState(null);
+
+  function handleEnrollClick(course) {
+    setSelectedCourse(course);
+    setShowForm(true);
+  }
+
+  function handleCloseForm() {
+    setShowForm(false);
+    setSelectedCourse(null);
+  }
+
   return (
     <section id="services" className="py-20 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-card/50 to-background"></div>
-
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center space-y-4 mb-16" >
-          <div  data-aos="fade-down">
-          <Badge variant="outline" className="border-primary text-primary">
-            Our Courses
-          </Badge>
+        <div className="text-center space-y-4 mb-16">
+          <div data-aos="fade-down">
+            <Badge variant="outline" className="border-primary text-primary">
+              Our Courses
+            </Badge>
           </div>
-         
           <h2 className="text-3xl md:text-5xl font-heading font-black text-foreground" data-aos="fade-up">
             Professional Training
             <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"> Programs</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto"  data-aos="fade-up">
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto" data-aos="fade-up">
             Choose from our comprehensive range of industry-leading software training courses, designed by experts and
             trusted by professionals worldwide.
           </p>
@@ -95,16 +209,16 @@ export default function ServicesSection() {
         {/* Course Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {courses.map((course, index) => {
-            const IconComponent = course.icon
+            const IconComponent = course.icon;
             return (
               <Card
                 key={index}
-                className=" border-border/20  transition-all duration-300 group  bg-white rounded-3xl"
-               data-aos="zoom-in"
-               >
-                <CardHeader className="space-y-4" >
+                className="border-border/20 transition-all duration-300 group bg-white rounded-3xl"
+                data-aos="zoom-in"
+              >
+                <CardHeader className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <div className="w-12 h-12  rounded-lg flex items-center justify-center  transition-all duration-300 " style={{boxShadow:"0px 0px 5px #1212"}}>
+                    <div className="w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300" style={{ boxShadow: "0px 0px 5px #1212" }}>
                       <IconComponent className="w-6 h-6 bg-white text-black" />
                     </div>
                     <Badge variant="secondary" className="bg-secondary/20 text-secondary border-secondary/30">
@@ -112,7 +226,7 @@ export default function ServicesSection() {
                     </Badge>
                   </div>
                   <div>
-                    <CardTitle className="text-xl font-heading font-bold text-foreground  transition-colors">
+                    <CardTitle className="text-xl font-heading font-bold text-foreground transition-colors">
                       {course.title}
                     </CardTitle>
                     <CardDescription className="text-muted-foreground mt-2">{course.description}</CardDescription>
@@ -151,17 +265,23 @@ export default function ServicesSection() {
 
                   {/* CTA Button */}
                   <Button
-                   id="Enroll-button"
-                   type="button"
-                  className="w-full bg-black text-white hover:bg-black ">
+                    id="Enroll-button"
+                    type="button"
+                    className="w-full bg-black text-white hover:bg-black cursor-pointer"
+                    onClick={() => handleEnrollClick(course)}
+                  >
                     Enroll Now
                   </Button>
                 </CardContent>
               </Card>
-            )
+            );
           })}
         </div>
+
+        {showForm && selectedCourse && (
+          <EnrollmentForm course={selectedCourse} onClose={handleCloseForm} />
+        )}
       </div>
     </section>
-  )
+  );
 }
