@@ -75,15 +75,18 @@ export default function ServicesSection() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center space-y-4 mb-16">
+        <div className="text-center space-y-4 mb-16" >
+          <div  data-aos="fade-down">
           <Badge variant="outline" className="border-primary text-primary">
             Our Courses
           </Badge>
-          <h2 className="text-3xl md:text-5xl font-heading font-black text-foreground">
+          </div>
+         
+          <h2 className="text-3xl md:text-5xl font-heading font-black text-foreground" data-aos="fade-up">
             Professional Training
             <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"> Programs</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto"  data-aos="fade-up">
             Choose from our comprehensive range of industry-leading software training courses, designed by experts and
             trusted by professionals worldwide.
           </p>
@@ -96,19 +99,20 @@ export default function ServicesSection() {
             return (
               <Card
                 key={index}
-                className="gradient-card border-border/20 hover:glow-primary transition-all duration-300 group"
-              >
-                <CardHeader className="space-y-4">
+                className=" border-border/20  transition-all duration-300 group  bg-white rounded-3xl"
+               data-aos="zoom-in"
+               >
+                <CardHeader className="space-y-4" >
                   <div className="flex items-center justify-between">
-                    <div className="w-12 h-12 gradient-primary rounded-lg flex items-center justify-center group-hover:glow-primary transition-all duration-300">
-                      <IconComponent className="w-6 h-6 text-white" />
+                    <div className="w-12 h-12  rounded-lg flex items-center justify-center  transition-all duration-300 " style={{boxShadow:"0px 0px 5px #1212"}}>
+                      <IconComponent className="w-6 h-6 bg-white text-black" />
                     </div>
                     <Badge variant="secondary" className="bg-secondary/20 text-secondary border-secondary/30">
                       {course.level}
                     </Badge>
                   </div>
                   <div>
-                    <CardTitle className="text-xl font-heading font-bold text-foreground group-hover:text-primary transition-colors">
+                    <CardTitle className="text-xl font-heading font-bold text-foreground  transition-colors">
                       {course.title}
                     </CardTitle>
                     <CardDescription className="text-muted-foreground mt-2">{course.description}</CardDescription>
@@ -119,7 +123,7 @@ export default function ServicesSection() {
                   {/* Course Stats */}
                   <div className="flex items-center justify-between text-sm">
                     <div className="flex items-center space-x-1">
-                      <Clock className="w-4 h-4 text-primary" />
+                      <Clock className="w-4 h-4 text-black" />
                       <span className="text-muted-foreground">{course.duration}</span>
                     </div>
                     <div className="flex items-center space-x-1">
@@ -138,7 +142,7 @@ export default function ServicesSection() {
                     <div className="grid grid-cols-2 gap-1">
                       {course.features.map((feature, idx) => (
                         <div key={idx} className="text-xs text-muted-foreground flex items-center">
-                          <div className="w-1 h-1 bg-primary rounded-full mr-2"></div>
+                          <div className="w-1 h-1 bg-black rounded-full mr-2"></div>
                           {feature}
                         </div>
                       ))}
@@ -146,7 +150,10 @@ export default function ServicesSection() {
                   </div>
 
                   {/* CTA Button */}
-                  <Button className="w-full gradient-primary hover:glow-primary transition-all duration-300">
+                  <Button
+                   id="Enroll-button"
+                   type="button"
+                  className="w-full bg-black text-white hover:bg-black ">
                     Enroll Now
                   </Button>
                 </CardContent>
