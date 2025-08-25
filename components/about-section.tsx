@@ -7,9 +7,9 @@ import { Award, Users, BookOpen, Target, CheckCircle, TrendingUp } from "lucide-
 const achievements = [
   {
     icon: Users,
-    number: "5000+",
-    label: "Students Trained",
-    description: "Professionals across 50+ countries",
+    number: "5+",
+    label: "Excellent Teachers",
+    description: "Professional Guidance",
   },
   {
     icon: Award,
@@ -56,9 +56,9 @@ export default function AboutSection() {
                 <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"> Expert Training</span>
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                For over 15 years, CadTech has been at the forefront of professional software training. We've helped
-                thousands of professionals master the tools they need to excel in their careers, from AutoCAD and video
-                editing to web development and data visualization.
+                CadTech has been at the forefront of professional software training. We've helped
+                thousands of professionals master the tools they need to excel in their careers, from CAD
+                Designing to Fullstack development and Graphic Designing.
               </p>
             </div>
 
@@ -85,7 +85,7 @@ export default function AboutSection() {
                   <div>
                     <h4 className="font-heading font-bold text-foreground mb-2">Our Mission</h4>
                     <p className="text-muted-foreground text-sm leading-relaxed">
-                      To bridge the gap between ambition and achievement by providing world-class software training that
+                      To bridge the gap between ambition and achievement by providing world-class software with best training that
                       transforms careers and opens new opportunities in the digital economy.
                     </p>
                   </div>

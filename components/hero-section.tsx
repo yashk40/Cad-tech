@@ -59,6 +59,9 @@ export default function HeroSection() {
   }, [vantaEffect])
 
   return (
+    <>
+    
+    
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden" style={{fontFamily:"Poppins"}}>
       {/* Background gradient */}
       
@@ -107,7 +110,7 @@ export default function HeroSection() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-14">
             <button
              style={{fontSize:"18px"}}
-              className="cssbuttons-io  px-8 py-1"
+              className="cssbuttons-io  px-8 py-1.5"
             >
               <span>
               Start Learning Today
@@ -130,6 +133,25 @@ export default function HeroSection() {
       
         </div>
       </div>
+
     </section>
+    {/* <svg
+  viewBox="0 0 1440 150"
+  preserveAspectRatio="none"
+  xmlns="http://www.w3.org/2000/svg"
+  className="absolute w-full bottom-[-10px] sm:bottom-[-30px] md:bottom-[-20px] lg:bottom-[-50px]"
+>
+  <polygon points="0,150 0,50 200,100 400,40 600,80 800,20 1000,90 1200,10 1440,50 1440,150" 
+           fill="url(#grad)" />
+  <defs>
+    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f8f8f8" />
+      <stop offset="100%" stop-color="#f8f8f8" />
+    </linearGradient>
+  </defs>
+</svg> */}
+
+    </>
+    
   )
 }

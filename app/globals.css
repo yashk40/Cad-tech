@@ -190,85 +190,23 @@ body{
 
 
 
-
-/* From Uiverse.io by adamgiebl */ 
-.cssbuttons-io {
-  position: relative;
-  font-family: inherit;
-  font-weight: 500;
-  font-size: 13px;
-  letter-spacing: 0.05em;
-  border-radius: 0.8em;
-  cursor: pointer;
-  border: none;
-  background:white;
-  color: ghostwhite;
-  overflow: hidden;
-}
-
-
-.cssbuttons-io span {
-  position: relative;
-  z-index: 10;
-  transition: color 0.4s;
-  display: inline-flex;
-  align-items: center;
-  padding: 0.8em 1.2em 0.8em 1.05em;
-}
-
-.cssbuttons-io::before,
-.cssbuttons-io::after {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-}
-
-.cssbuttons-io::before {
-  content: "";
-  background: #000;
-  width: 120%;
-  left: -10%;
-  transform: skew(30deg);
-  transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
-}
-
-.cssbuttons-io:hover::before {
-  transform: translate3d(100%, 0, 0);
-
-}
-
-.cssbuttons-io:hover{
-  color:black;
-}
-
-.cssbuttons-io:active {
-  transform: scale(0.95);
-}
-
-
-
-
-
-
+/* Base button styles */
+.cssbuttons-io,
 .cssbuttons-io-2 {
   position: relative;
   font-family: inherit;
   font-weight: 500;
   font-size: 13px;
   letter-spacing: 0.05em;
-  border-radius: 0.8em;
+  border-radius: 20px;
   cursor: pointer;
   border: none;
-  background:transparent;
-  border-radius: 20px;
-  border: 2px solid white;
-  color: ghostwhite;
   overflow: hidden;
+  transition: all 0.3s ease;
 }
 
+/* Main button content */
+.cssbuttons-io span,
 .cssbuttons-io-2 span {
   position: relative;
   z-index: 10;
@@ -278,35 +216,94 @@ body{
   padding: 0.8em 1.2em 0.8em 1.05em;
 }
 
+/* Button 1 specific */
+.cssbuttons-io {
+  background: white;
+  color: ghostwhite;
+}
 
+.cssbuttons-io::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -10%;
+  width: 120%;
+  height: 100%;
+  background: #000;
+  z-index: 0;
+  transform: skew(30deg);
+  transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+}
 
+.cssbuttons-io:hover::before {
+  transform: translate3d(100%, 0, 0);
+}
 
+.cssbuttons-io:hover {
+  color: black;
+}
 
+.cssbuttons-io:active {
+  transform: scale(0.95);
+}
 
-
-
+/* Button 2 specific */
+.cssbuttons-io-2 {
+  background: transparent;
+  border: 2px solid white;
+  color: ghostwhite;
+}
 
 .cssbuttons-io-2::before {
   content: "";
-  width: 120%;
+  position: absolute;
+  top: 0;
   left: -10%;
+  width: 120%;
+  height: 100%;
+  z-index: 0;
   transform: skew(30deg);
   transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
 }
 
 .cssbuttons-io-2:hover::before {
   transform: translate3d(100%, 0, 0);
-
 }
 
-.cssbuttons-io-2:hover{
-  color:black;
+.cssbuttons-io-2:hover {
+  color: black;
   background-color: white;
 }
 
 .cssbuttons-io-2:active {
   transform: scale(0.95);
-  
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .cssbuttons-io,
+  .cssbuttons-io-2 {
+    font-size: 12px;
+    border-radius: 16px;
+  }
+
+  .cssbuttons-io span,
+  .cssbuttons-io-2 span {
+    padding: 0.6em 1em 0.6em 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  .cssbuttons-io,
+  .cssbuttons-io-2 {
+    font-size: 11px;
+    border-radius: 14px;
+  }
+
+  .cssbuttons-io span,
+  .cssbuttons-io-2 span {
+    padding: 0.5em 0.8em 0.5em 0.7em;
+  }
 }
 
 

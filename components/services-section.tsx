@@ -1,103 +1,185 @@
-"use client"
+"use client";
 
-import React, { useState, useRef, useEffect } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import React, { useState, useRef, useEffect } from "react";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Layers, Video, Palette, Database, Code2, Camera, Clock, Users, Star } from "lucide-react";
+import { Video, Clock, Star } from "lucide-react";
 
-// Note: Add this script tag to your main HTML file or use Next.js Script component in _app.js or layout
-// <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-
+// Courses Data
 const courses = [
-  {
-    icon: Layers,
-    title: "AutoCAD Mastery",
-    description: "Complete AutoCAD training from basics to advanced 3D modeling and technical drawing.",
-    duration: "12 weeks",
-    students: "2,500+",
-    rating: "4.9",
-    level: "All Levels",
-    features: ["2D & 3D Design", "Technical Drawing", "Industry Projects", "Certification"],
-  },
-  {
-    icon: Video,
-    title: "Video Editing Pro",
-    description: "Master professional video editing with Adobe Premiere Pro, After Effects, and DaVinci Resolve.",
-    duration: "10 weeks",
-    students: "1,800+",
-    rating: "4.8",
-    level: "Beginner to Pro",
-    features: ["Multi-platform Training", "Color Grading", "Motion Graphics", "Portfolio Building"],
-  },
-  {
-    icon: Palette,
-    title: "Graphic Design",
-    description: "Learn Adobe Creative Suite including Photoshop, Illustrator, and InDesign for professional design.",
-    duration: "8 weeks",
-    students: "1,200+",
-    rating: "4.9",
-    level: "All Levels",
-    features: ["Adobe Creative Suite", "Brand Design", "Print & Digital", "Client Projects"],
-  },
-  {
-    icon: Database,
-    title: "Data Visualization",
-    description: "Create compelling data visualizations using Tableau, Power BI, and advanced Excel techniques.",
-    duration: "6 weeks",
-    students: "900+",
-    rating: "4.7",
-    level: "Intermediate",
-    features: ["Tableau & Power BI", "Dashboard Design", "Data Analysis", "Business Intelligence"],
-  },
-  {
-    icon: Code2,
-    title: "Web Development",
-    description: "Build modern websites and web applications using HTML, CSS, JavaScript, and React.",
-    duration: "16 weeks",
-    students: "2,100+",
-    rating: "4.8",
-    level: "Beginner to Advanced",
-    features: ["Full-Stack Development", "React & Node.js", "Database Integration", "Deployment"],
-  },
-  {
-    icon: Camera,
-    title: "Photography & Editing",
-    description: "Master digital photography and photo editing with Lightroom and Photoshop.",
-    duration: "8 weeks",
-    students: "1,500+",
-    rating: "4.9",
-    level: "All Levels",
-    features: ["Digital Photography", "Lightroom & Photoshop", "Portfolio Development", "Business Skills"],
-  },
+  
+    {
+      "title": "AutoCAD 2D/3D",
+      "image": "https://i.postimg.cc/kgwpFCFM/image-9.jpg",
+      "duration": "6 weeks",
+      "students": "20+ live classes",
+      "rating": "4.9",
+      "features": [
+        "2D & 3D Design",
+        "Technical Drawing",
+        "Industry Projects",
+        "Certification"
+      ]
+    },
+    {
+      "title": "Solid Works",
+      "image": "https://i.postimg.cc/6qp3qnKL/photo-6147830576091088525-y.jpg",
+      "duration": "9 weeks",
+      "students": "28+ Live classes",
+      "rating": "4.8",
+      "features": [
+        "3D Modeling",
+        "Assembly Design",
+        "Simulation",
+        "Certification Prep"
+      ]
+    },
+    {
+      "title": "Siemens NX",
+      "image": "/images/siemens-nx-course.jpg",
+      "duration": "10 weeks",
+      "students": "30+ Live classes",
+      "rating": "4.7",
+      "features": [
+        "CAD/CAM",
+        "3D Modeling",
+        "Assembly Design",
+        "Manufacturing Tools"
+      ]
+    },
+    {
+      "title": "UI/UX Design",
+      "image": "/images/ui-ux-course.jpg",
+      "duration": "12 weeks",
+      "students": "30+ Live classes",
+      "rating": "4.9",
+      "features": [
+        "Figma & Adobe XD",
+        "User Research",
+        "Prototyping",
+        "Usability Testing"
+      ]
+    },
+    {
+      "title": "Video Editing",
+      "image": "/images/video-editing-course.jpg",
+      "duration": "8 weeks",
+      "students": "22+ Live classes",
+      "rating": "4.8",
+      "features": [
+        "Adobe Premiere Pro",
+        "After Effects",
+        "Color Grading",
+        "Project Editing"
+      ]
+    },
+    {
+      "title": "Java Full-Stack Development",
+      "image": "/images/java-fullstack-course.jpg",
+      "duration": "16 weeks",
+      "students": "44+ Live classes",
+      "rating": "4.9",
+      "features": [
+        "Core Java",
+        "Spring Boot",
+        "React & Angular",
+        "RESTful APIs"
+      ]
+    },
+    {
+      "title": "Spring Boot and Microservices Development",
+      "image": "/images/spring-boot-course.jpg",
+      "duration": "14 weeks",
+      "students": "35+ Live classes",
+      "rating": "4.8",
+      "features": [
+        "Microservices Architecture",
+        "Spring Cloud",
+        "Docker & Kubernetes",
+        "API Gateway"
+      ]
+    },
+  
+   
+    {
+      "title": "Generative AI",
+      "image": "/images/gen-ai-course.jpg",
+      "duration": "12 weeks",
+      "students": "35+ Live clsses",
+      "rating": "4.9",
+      "features": [
+        "Prompt Engineering",
+        "API managment",
+        "AI Tools Integration",
+        "Ethical AI Practices"
+      ]
+    },
+    {
+      "title": "Project Development",
+      "image": "/images/project-dev-course.jpg",
+      "duration": "10 weeks",
+      "students": "25+ Live classes",
+      "rating": "4.7",
+      "features": [
+        "Agile & Scrum",
+        "Project Planning",
+        "Risk Management",
+        "Team Collaboration"
+      ]
+    },
+    {
+      "title": "Graphic Designing",
+      "image": "/images/graphic-design-course.jpg",
+      "duration": "26 weeks",
+      "students": "50+ Live classes",
+      "rating": "4.9",
+      "features": [
+        "Adobe Illustrator",
+        "Adobe Indesign",
+        "Corel Draw",
+        "After Effects",
+        "Photoshop",
+        "Premier Pro"
+
+      ]
+    },
+    {
+      "title": "MS Office",
+      "image": "/images/ms-office-course.jpg",
+      "duration": "6 weeks",
+      "students": "15+ Live classes",
+      "rating": "4.6",
+      "features": [
+        "Excel",
+        "Word ",
+        "PowerPoint",
+        "Paint"
+      ]
+    }
 ];
 
+// Enrollment form
 function EnrollmentForm({ course, onClose }) {
   const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
+    fullName: "",
+    email: "",
     courseInterest: course.title,
-    message: '',
+    message: "",
   });
 
   const modalRef = useRef(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(modalRef.current, {
-        opacity: 0,
-        scale: 0.9,
-        duration: 0.5,
-        ease: 'power2.out',
-      });
-    }, modalRef);
-
     const handleScroll = () => onClose();
-    window.addEventListener('scroll', handleScroll);
-
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      ctx.revert(); // Cleanup GSAP
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [onClose]);
 
@@ -112,12 +194,25 @@ function EnrollmentForm({ course, onClose }) {
 
   return (
     <div className="fixed inset-0 bg-[#1d1d1d2d] flex items-center justify-center z-50">
-      <div ref={modalRef} className="bg-white rounded-lg p-6 max-w-md w-full relative">
-        <button className="absolute top-2 right-2 text-gray-600 hover:text-gray-900" onClick={onClose}>&times;</button>
+      <div
+        ref={modalRef}
+        className="bg-white rounded-lg p-6 max-w-md w-full relative"
+      >
+        <button
+          className="absolute top-2 right-2 text-gray-600 hover:text-gray-900"
+          onClick={onClose}
+        >
+          &times;
+        </button>
         <h3 className="text-lg font-bold mb-4">Enroll in {course.title}</h3>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">Full Name</label>
+            <label
+              htmlFor="fullName"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Full Name
+            </label>
             <input
               id="fullName"
               name="fullName"
@@ -129,7 +224,12 @@ function EnrollmentForm({ course, onClose }) {
             />
           </div>
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Email
+            </label>
             <input
               id="email"
               name="email"
@@ -141,7 +241,12 @@ function EnrollmentForm({ course, onClose }) {
             />
           </div>
           <div>
-            <label htmlFor="courseInterest" className="block text-sm font-medium text-gray-700">Course Interest</label>
+            <label
+              htmlFor="courseInterest"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Course Interest
+            </label>
             <input
               id="courseInterest"
               name="courseInterest"
@@ -152,7 +257,12 @@ function EnrollmentForm({ course, onClose }) {
             />
           </div>
           <div>
-            <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message</label>
+            <label
+              htmlFor="message"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Message
+            </label>
             <textarea
               id="message"
               name="message"
@@ -171,6 +281,7 @@ function EnrollmentForm({ course, onClose }) {
   );
 }
 
+// Main component
 export default function ServicesSection() {
   const [showForm, setShowForm] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState(null);
@@ -187,75 +298,98 @@ export default function ServicesSection() {
 
   return (
     <section id="services" className="py-20 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-card/50 to-background"></div>
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center space-y-4 mb-16">
           <div data-aos="fade-down">
-            <Badge variant="outline" className="border-primary text-primary">
+            <Badge variant="outline" className="border-black text-black">
               Our Courses
             </Badge>
           </div>
-          <h2 className="text-3xl md:text-5xl font-heading font-black text-foreground" data-aos="fade-up">
-            Professional Training
-            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"> Programs</span>
+          <h2
+            className="text-3xl md:text-5xl font-heading font-black text-foreground"
+            data-aos="fade-up"
+          >
+            Professional Training{" "}
+            <span className="bg-gradient-to-r from-black to-secondary bg-clip-text text-transparent">
+              Programs
+            </span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto" data-aos="fade-up">
-            Choose from our comprehensive range of industry-leading software training courses, designed by experts and
-            trusted by professionals worldwide.
+          <p
+            className="text-lg text-muted-foreground max-w-3xl mx-auto"
+            data-aos="fade-up"
+          >
+            Choose from our comprehensive range of industry-leading
+            software training courses, designed by experts and trusted by
+            professionals worldwide.
           </p>
         </div>
 
         {/* Course Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {courses.map((course, index) => {
-            const IconComponent = course.icon;
             return (
               <Card
                 key={index}
-                className="border-border/20 transition-all duration-300 group bg-white rounded-3xl"
+               
+                className="border-border/20 transition-all duration-300 group bg-white rounded-3xl overflow-hidden py-0"
                 data-aos="zoom-in"
               >
-                <CardHeader className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div className="w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300" style={{ boxShadow: "0px 0px 5px #1212" }}>
-                      <IconComponent className="w-6 h-6 bg-white text-black" />
-                    </div>
-                    <Badge variant="secondary" className="bg-secondary/20 text-secondary border-secondary/30">
-                      {course.level}
-                    </Badge>
-                  </div>
-                  <div>
-                    <CardTitle className="text-xl font-heading font-bold text-foreground transition-colors">
-                      {course.title}
-                    </CardTitle>
-                    <CardDescription className="text-muted-foreground mt-2">{course.description}</CardDescription>
-                  </div>
+                {/* Image fully flush with top */}
+                <div className="relative h-[200px] overflow-hidden">
+                  <img
+                    src={course.image}
+                    alt={course.title}
+                 
+                    className="w-full h-full object-cover object-top block"
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = "/placeholder.jpg";
+                    }}
+                  />
+                </div>
+
+                {/* Remove extra padding from CardHeader */}
+                <CardHeader className="px-4 pt-4 pb-0">
+                  <CardTitle className="text-xl font-heading font-bold text-foreground">
+                    {course.title}
+                  </CardTitle>
                 </CardHeader>
 
-                <CardContent className="space-y-6">
+                <CardContent className="space-y-6 px-4 pb-6">
                   {/* Course Stats */}
                   <div className="flex items-center justify-between text-sm">
                     <div className="flex items-center space-x-1">
                       <Clock className="w-4 h-4 text-black" />
-                      <span className="text-muted-foreground">{course.duration}</span>
+                      <span className="text-muted-foreground">
+                        {course.duration}
+                      </span>
                     </div>
                     <div className="flex items-center space-x-1">
-                      <Users className="w-4 h-4 text-secondary" />
-                      <span className="text-muted-foreground">{course.students}</span>
+                      <Video className="w-4 h-4 text-secondary" />
+                      <span className="text-muted-foreground">
+                        {course.students}
+                      </span>
                     </div>
                     <div className="flex items-center space-x-1">
                       <Star className="w-4 h-4 text-yellow-500 fill-current" />
-                      <span className="text-muted-foreground">{course.rating}</span>
+                      <span className="text-muted-foreground">
+                        {course.rating}
+                      </span>
                     </div>
                   </div>
 
                   {/* Features */}
                   <div className="space-y-2">
-                    <h4 className="text-sm font-semibold text-foreground">What You'll Learn:</h4>
+                    <h4 className="text-sm font-semibold text-foreground">
+                      What You'll Learn:
+                    </h4>
                     <div className="grid grid-cols-2 gap-1">
                       {course.features.map((feature, idx) => (
-                        <div key={idx} className="text-xs text-muted-foreground flex items-center">
+                        <div
+                          key={idx}
+                          className="text-xs text-muted-foreground flex items-center"
+                        >
                           <div className="w-1 h-1 bg-black rounded-full mr-2"></div>
                           {feature}
                         </div>
@@ -265,7 +399,6 @@ export default function ServicesSection() {
 
                   {/* CTA Button */}
                   <Button
-                    id="Enroll-button"
                     type="button"
                     className="w-full bg-black text-white hover:bg-black cursor-pointer"
                     onClick={() => handleEnrollClick(course)}
