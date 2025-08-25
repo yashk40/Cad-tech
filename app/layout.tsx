@@ -21,7 +21,6 @@ export const metadata: Metadata = {
   title: "CadTech - Professional Software Training",
   description:
     "Master AutoCAD, Video Editing, and more with expert-led courses. Professional software training for career advancement.",
-  generator: "v0.app",
 };
 
 export default function RootLayout({
