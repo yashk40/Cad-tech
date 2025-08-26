@@ -1,14 +1,13 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
-import { Mail, Phone, MapPin, Clock, Send, MessageSquare } from "lucide-react"
+import { Mail, Phone, MapPin, Clock, Send, MessageSquare, CheckCircle } from "lucide-react"
 
 const contactInfo = [
   {
@@ -38,11 +37,43 @@ export default function ContactSection() {
     course: "",
     message: "",
   })
+  
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [submitError, setSubmitError] = useState("")
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
-    console.log("Form submitted:", formData)
+    setIsSubmitting(true)
+    setSubmitError("")
+
+    try {
+      const response = await fetch("https://formspree.io/f/mvgbowbg", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          course: formData.course,
+          message: formData.message,
+        }),
+      })
+
+      if (response.ok) {
+        setIsSubmitted(true)
+        setFormData({ name: "", email: "", course: "", message: "" })
+        // Auto hide success message after 5 seconds
+        setTimeout(() => setIsSubmitted(false), 5000)
+      } else {
+        throw new Error("Failed to send message")
+      }
+    } catch (error) {
+      setSubmitError("Failed to send message. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -103,7 +134,7 @@ export default function ContactSection() {
 
           {/* Contact Form */}
           <div className="lg:col-span-2">
-            <Card className="bg-white border-border/20 ">
+            <Card className="bg-white border-border/20">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2 text-foreground">
                   <MessageSquare className="w-6 h-6 text-black" />
@@ -111,7 +142,26 @@ export default function ContactSection() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
+                {/* Success Message */}
+                {isSubmitted && (
+                  <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+                    <div className="flex items-center space-x-3">
+                      <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0" />
+                      <div>
+                        <h4 className="font-semibold text-green-800">Message Sent Successfully!</h4>
+                        <p className="text-green-600 text-sm">Thank you for reaching out. We'll get back to you within 24 hours.</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {submitError && (
+                    <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+                      <p className="text-red-600 text-sm">{submitError}</p>
+                    </div>
+                  )}
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label htmlFor="name" className="text-sm font-semibold text-foreground">
@@ -125,6 +175,7 @@ export default function ContactSection() {
                         placeholder="Enter your full name"
                         className="bg-gray-200 border-border focus:border-black"
                         required
+                        disabled={isSubmitting}
                       />
                     </div>
                     <div className="space-y-2">
@@ -140,6 +191,7 @@ export default function ContactSection() {
                         placeholder="Enter your email"
                         className="bg-gray-200 border-border focus:border-black"
                         required
+                        disabled={isSubmitting}
                       />
                     </div>
                   </div>
@@ -155,6 +207,7 @@ export default function ContactSection() {
                       onChange={handleChange}
                       placeholder="Which course are you interested in?"
                       className="bg-gray-200 border-border focus:border-black"
+                      disabled={isSubmitting}
                     />
                   </div>
 
@@ -170,16 +223,18 @@ export default function ContactSection() {
                       placeholder="Tell us about your goals and how we can help..."
                       className="bg-gray-200 border-border focus:border-black min-h-[120px]"
                       required
+                      disabled={isSubmitting}
                     />
                   </div>
 
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full bg-black  transition-all duration-300 hover:bg-black"
+                    className="w-full bg-black transition-all duration-300 hover:bg-black/90"
+                    disabled={isSubmitting}
                   >
                     <Send className="w-5 h-5 mr-2" />
-                    Send Message
+                    {isSubmitting ? "Sending..." : "Send Message"}
                   </Button>
                 </form>
               </CardContent>

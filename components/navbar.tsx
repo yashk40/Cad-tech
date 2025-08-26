@@ -59,7 +59,7 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
-            {["home", "services", "about", "contact"].map((section) => (
+            {["home", "Courses", "about", "contact"].map((section) => (
               <a
                 key={section}
                 href={`#${section}`}
@@ -99,7 +99,7 @@ export default function Navbar() {
             className="px-2 pt-2 pb-3 space-y-1 glass-effect rounded-lg mt-2 overflow-hidden"
             style={{ display: "none", height: 0 }}
           >
-            {["home", "services", "about", "contact"].map((section) => (
+            {["home", "Courses", "about", "contact"].map((section) => (
               <a
                 key={section}
                 href={`#${section}`}
@@ -113,9 +113,9 @@ export default function Navbar() {
               </a>
             ))}
 
-            <button className="cssbuttons-io sm:w-full">
+            <a href="https://wa.link/i1ln2i" className="cssbuttons-io sm:w-full" id="Apply-now">
               <span>Apply Now</span>
-            </button>
+            </a>
           </div>
         </div>
       </div>
