@@ -111,6 +111,7 @@ export default function HeroSection() {
             <button
              style={{fontSize:"18px"}}
               className="cssbuttons-io  px-8 py-1.5"
+               onClick={() => window.open('https://wa.link/i1ln2i')}
             >
               <span>
               Start Learning Today

@@ -112,10 +112,13 @@ export default function Navbar() {
                 {section.charAt(0).toUpperCase() + section.slice(1)}
               </a>
             ))}
+<button 
+  onClick={() => window.open('https://wa.link/i1ln2i')}
+  className="cssbuttons-io sm:w-full"
+>
+  <span>Apply Now</span>
+</button>
 
-            <a href="https://wa.link/i1ln2i" className="cssbuttons-io sm:w-full" id="Apply-now">
-              <span>Apply Now</span>
-            </a>
           </div>
         </div>
       </div>
