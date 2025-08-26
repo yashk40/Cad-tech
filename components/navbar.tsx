@@ -73,9 +73,9 @@ export default function Navbar() {
               </a>
             ))}
 
-            <button className="cssbuttons-io">
+            <a href="https://wa.link/i1ln2i" className="cssbuttons-io">
               <span>Apply Now</span>
-            </button>
+            </a>
           </div>
 
           {/* Mobile menu button */}
