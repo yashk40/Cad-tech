@@ -13,19 +13,19 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email Us",
-    details: "info@cadtech.com",
+    details: "cadtechofficial@gmail.com",
     description: "Get in touch for course inquiries",
   },
   {
     icon: Phone,
     title: "Call Us",
-    details: "+1 (555) 123-4567",
+    details: "+91 7303450061",
     description: "Speak with our training advisors",
   },
   {
     icon: Clock,
     title: "Office Hours",
-    details: "Mon-Fri: 9AM-6PM",
+    details: "Mon-Sun: 7AM-12PM",
     description: "We're here to help you succeed",
   },
 ]

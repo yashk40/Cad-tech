@@ -11,89 +11,62 @@ const footerLinks = {
   ],
   company: [
     { name: "About Us", href: "#about" },
-    { name: "Our Instructors", href: "#" },
-    { name: "Success Stories", href: "#" },
-    { name: "Careers", href: "#" },
-    { name: "Blog", href: "#" },
     { name: "Contact", href: "#contact" },
+    { name: "Careers", href: "#" },
   ],
   support: [
     { name: "Help Center", href: "#" },
-    { name: "Course Catalog", href: "#" },
     { name: "Student Portal", href: "#" },
-    { name: "Technical Support", href: "#" },
-    { name: "Refund Policy", href: "#" },
     { name: "Terms of Service", href: "#" },
+    { name: "Privacy Policy", href: "#" },
   ],
 }
 
 const socialLinks = [
-  { icon: Facebook, href: "#", label: "Facebook" },
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Instagram, href: "#", label: "Instagram" },
+  { icon: Facebook, href: "https://www.facebook.com/himan0001?rdid=F7oMiQ3bYzhPtbD8&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BVrxayTZi%2F#", label: "Facebook" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/himanshu-bro-945a29373/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", label: "LinkedIn" },
+  { icon: Instagram, href: "https://www.instagram.com/cad_tech_official/", label: "Instagram" },
 ]
 
 export default function Footer() {
   return (
-    <footer className="bg-card border-t border-border/20">
+    <footer className="bg-black text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
-        <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 gradient-primary rounded-lg flex items-center justify-center">
-                <Code className="w-6 h-6 text-white" />
-              </div>
-              <span className="text-2xl font-heading font-black text-foreground">CadTech</span>
+            
+              <span className="text-xl font-bold">CadTech</span>
             </div>
-            <p className="text-muted-foreground leading-relaxed max-w-md">
-              Empowering professionals with cutting-edge software training. Transform your career with industry-leading
-              courses and expert instruction.
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Empowering professionals with cutting-edge software training.
             </p>
-
+            
             {/* Contact Info */}
-            <div className="space-y-3">
-              <div className="flex items-center space-x-3 text-muted-foreground">
-                <Mail className="w-4 h-4 text-primary" />
-                <span>info@cadtech.com</span>
+            <div className="space-y-2 text-sm">
+              <div className="flex items-center space-x-2 text-gray-400">
+                <Mail className="w-4 h-4" />
+                <span>Cadtechofficial@gmail.com</span>
               </div>
-              <div className="flex items-center space-x-3 text-muted-foreground">
-                <Phone className="w-4 h-4 text-primary" />
-                <span>+1 (555) 123-4567</span>
+              <div className="flex items-center space-x-2 text-gray-400">
+                <Phone className="w-4 h-4" />
+                <span>+91 7303450061</span>
               </div>
-              <div className="flex items-center space-x-3 text-muted-foreground">
-                <MapPin className="w-4 h-4 text-primary" />
-                <span>123 Tech Street, Digital City</span>
-              </div>
-            </div>
-
-            {/* Social Links */}
-            <div className="flex space-x-4">
-              {socialLinks.map((social, index) => {
-                const IconComponent = social.icon
-                return (
-                  <a
-                    key={index}
-                    href={social.href}
-                    aria-label={social.label}
-                    className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-primary hover:glow-primary transition-all duration-300 group"
-                  >
-                    <IconComponent className="w-5 h-5 text-muted-foreground group-hover:text-white" />
-                  </a>
-                )
-              })}
             </div>
           </div>
 
           {/* Courses Links */}
           <div className="space-y-4">
-            <h3 className="font-heading font-bold text-foreground">Courses</h3>
-            <ul className="space-y-3">
+            <h3 className="font-semibold text-white">Courses</h3>
+            <ul className="space-y-2">
               {footerLinks.courses.map((link, index) => (
                 <li key={index}>
-                  <a href={link.href} className="text-muted-foreground hover:text-primary transition-colors">
+                  <a 
+                    href={link.href} 
+                    className="text-gray-400 text-sm hover:text-white transition-colors duration-200"
+                  >
                     {link.name}
                   </a>
                 </li>
@@ -103,11 +76,14 @@ export default function Footer() {
 
           {/* Company Links */}
           <div className="space-y-4">
-            <h3 className="font-heading font-bold text-foreground">Company</h3>
-            <ul className="space-y-3">
+            <h3 className="font-semibold text-white">Company</h3>
+            <ul className="space-y-2">
               {footerLinks.company.map((link, index) => (
                 <li key={index}>
-                  <a href={link.href} className="text-muted-foreground hover:text-primary transition-colors">
+                  <a 
+                    href={link.href} 
+                    className="text-gray-400 text-sm hover:text-white transition-colors duration-200"
+                  >
                     {link.name}
                   </a>
                 </li>
@@ -115,36 +91,56 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Support Links */}
+          {/* Support & Social */}
           <div className="space-y-4">
-            <h3 className="font-heading font-bold text-foreground">Support</h3>
-            <ul className="space-y-3">
+            <h3 className="font-semibold text-white">Support</h3>
+            <ul className="space-y-2">
               {footerLinks.support.map((link, index) => (
                 <li key={index}>
-                  <a href={link.href} className="text-muted-foreground hover:text-primary transition-colors">
+                  <a 
+                    href={link.href} 
+                    className="text-gray-400 text-sm hover:text-white transition-colors duration-200"
+                  >
                     {link.name}
                   </a>
                 </li>
               ))}
             </ul>
+            
+            {/* Social Links */}
+            <div className="flex space-x-3 mt-4">
+              {socialLinks.map((social, index) => {
+                const IconComponent = social.icon
+                return (
+                  <a
+                    key={index}
+                    href={social.href}
+                    aria-label={social.label}
+                    className="w-8 h-8 bg-gray-800 rounded flex items-center justify-center hover:bg-white hover:text-black transition-all duration-200"
+                  >
+                    <IconComponent className="w-4 h-4" />
+                  </a>
+                )
+              })}
+            </div>
           </div>
         </div>
 
         {/* Bottom Footer */}
-        <div className="py-6 border-t border-border/20">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-muted-foreground text-sm">
-              © 2024 CadTech. All rights reserved. Empowering careers through expert training.
+        <div className="py-6 border-t border-gray-800">
+          <div className="flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0">
+            <p className="text-gray-400 text-sm">
+              © 2025 CadTech. All rights reserved.
             </p>
-            <div className="flex space-x-6 text-sm">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                Privacy Policy
+            <div className="flex space-x-4 text-sm">
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                Privacy
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                Terms of Service
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                Terms
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                Cookie Policy
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                Cookies
               </a>
             </div>
           </div>
