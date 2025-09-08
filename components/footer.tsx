@@ -7,18 +7,17 @@ const footerLinks = {
     { name: "AutoCAD Training", href: "#" },
     { name: "Video Editing", href: "#" },
     { name: "Graphic Design", href: "#" },
-    { name: "Web Development", href: "#" },
   ],
   company: [
-    { name: "About Us", href: "#about" },
-    { name: "Contact", href: "#contact" },
+    { name: "About Us", href: "/about" },
+    { name: "Contact", href: "/contact" },
     { name: "Careers", href: "#" },
   ],
   support: [
     { name: "Help Center", href: "#" },
     { name: "Student Portal", href: "#" },
     { name: "Terms of Service", href: "#" },
-    { name: "Privacy Policy", href: "#" },
+    { name: "Privacy Policy", href: "/privacy" },
   ],
 }
 
