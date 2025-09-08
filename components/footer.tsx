@@ -16,7 +16,7 @@ const footerLinks = {
   support: [
     { name: "Help Center", href: "#" },
     { name: "Student Portal", href: "#" },
-    { name: "Terms of Service", href: "#" },
+    { name: "Terms of Service", href: "/terms" },
     { name: "Privacy Policy", href: "/privacy" },
   ],
 }
