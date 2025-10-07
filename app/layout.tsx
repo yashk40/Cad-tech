@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   description:
     "Master AutoCAD, Video Editing, and more with expert-led courses. Professional software training for career advancement.",
   icons: {
-    icon: "https://i.postimg.cc/PqNTNgGt/8c052ace-0b18-4f4e-8070-3d83f01e0df8-removebg-preview.png",
+    icon: "https://i.postimg.cc/dQptbtyZ/image-jpg-1.jpg",
   },
 };
 

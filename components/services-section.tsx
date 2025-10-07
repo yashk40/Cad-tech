@@ -42,7 +42,7 @@ const courses = [
   },
   {
     "title": "Siemens NX",
-    "image": "https://i.ibb.co/4wSg856J/photo-6154376329588493543-y.jpg",
+    "image": "https://i.postimg.cc/0Qb1nFPB/Generated-Image-October-08-2025-1-28-AM.png",
     "duration": "10 weeks",
     "students": "30+ Live classes",
     "rating": "4.7",
