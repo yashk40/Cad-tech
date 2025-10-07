@@ -1,6 +1,7 @@
 import type { ReactNode } from "react"; // Import only the needed type for cleaner code
 import type { Metadata } from "next";
 import { Inter, Montserrat } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { LenisProvider } from "@/components/lenis-provider";
 
@@ -21,6 +22,9 @@ export const metadata: Metadata = {
   title: "CadTech - Professional Software Training",
   description:
     "Master AutoCAD, Video Editing, and more with expert-led courses. Professional software training for career advancement.",
+  icons: {
+    icon: "https://i.postimg.cc/PqNTNgGt/8c052ace-0b18-4f4e-8070-3d83f01e0df8-removebg-preview.png",
+  },
 };
 
 export default function RootLayout({
@@ -42,7 +46,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-background text-foreground">
         <LenisProvider>{children}</LenisProvider>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" strategy="afterInteractive" />
+        <Script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" strategy="afterInteractive" />
         <script dangerouslySetInnerHTML={{ __html: "AOS.init();" }} /> {/* Basic AOS init; customize as needed */}
       </body>
     </html>

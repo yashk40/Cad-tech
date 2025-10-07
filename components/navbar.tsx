@@ -98,7 +98,7 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <img
-              src="https://i.postimg.cc/DZyPZ49T/photo-6138736463878145930-x-removebg-preview.png"
+              src="https://i.postimg.cc/ry4nMQP3/image-13-removebg-preview.png"
               height={60}
               width={60}
               alt="Cad Tech Logo"

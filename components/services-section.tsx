@@ -42,7 +42,7 @@ const courses = [
   },
   {
     "title": "Siemens NX",
-    "image": "/images/siemens-nx-course.jpg",
+    "image": "https://i.ibb.co/4wSg856J/photo-6154376329588493543-y.jpg",
     "duration": "10 weeks",
     "students": "30+ Live classes",
     "rating": "4.7",
@@ -55,7 +55,7 @@ const courses = [
   },
   {
     "title": "UI/UX Design",
-    "image": "/images/ui-ux-course.jpg",
+    "image": "https://i.postimg.cc/cHvn0k4Z/photo-6156628129402178239-x.jpg",
     "duration": "12 weeks",
     "students": "30+ Live classes",
     "rating": "4.9",
@@ -68,7 +68,7 @@ const courses = [
   },
   {
     "title": "Video Editing",
-    "image": "/images/video-editing-course.jpg",
+    "image": "https://i.postimg.cc/RFSHyC2K/photo-6168142515815958621-y.jpg",
     "duration": "8 weeks",
     "students": "22+ Live classes",
     "rating": "4.8",
@@ -81,7 +81,7 @@ const courses = [
   },
   {
     "title": "Java Full-Stack Development",
-    "image": "/images/java-fullstack-course.jpg",
+    "image": "https://i.postimg.cc/P5dTmLDT/photo-6179375186734860782-y.jpg",
     "duration": "16 weeks",
     "students": "44+ Live classes",
     "rating": "4.9",
@@ -94,7 +94,7 @@ const courses = [
   },
   {
     "title": "Spring Boot and Microservices Development",
-    "image": "/images/spring-boot-course.jpg",
+    "image": "https://media.licdn.com/dms/image/v2/D5612AQFZxDT8T_1Pxg/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1710502542744?e=2147483647&v=beta&t=VsQEl7__F9XPaKuF8ICteGwQsOi0n-V0dYNq6YMdueM",
     "duration": "14 weeks",
     "students": "35+ Live classes",
     "rating": "4.8",
@@ -107,7 +107,7 @@ const courses = [
   },
   {
     "title": "Project Development",
-    "image": "/images/project-dev-course.jpg",
+    "image": "https://idapgroup.com/blog/blog/wp-content/uploads/2018/07/image1.png",
     "duration": "10 weeks",
     "students": "25+ Live classes",
     "rating": "4.7",
@@ -120,7 +120,7 @@ const courses = [
   },
   {
     "title": "Graphic Designing",
-    "image": "/images/graphic-design-course.jpg",
+    "image": "https://i.ibb.co/BHCXf8S6/photo-6156628129402178237-y.jpg",
     "duration": "26 weeks",
     "students": "50+ Live classes",
     "rating": "4.9",
@@ -135,7 +135,7 @@ const courses = [
   },
   {
     "title": "MS Office",
-    "image": "/images/ms-office-course.jpg",
+    "image": "https://tyfontech.wordpress.com/wp-content/uploads/2018/02/c566a-office-logos-for-banner2.png",
     "duration": "6 weeks",
     "students": "15+ Live classes",
     "rating": "4.6",
